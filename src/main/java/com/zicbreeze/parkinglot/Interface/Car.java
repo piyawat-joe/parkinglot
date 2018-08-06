@@ -1,4 +1,4 @@
-package com.gojek.parkinglot.Interface;
+package com.zicbreeze.parkinglot.Interface;
 
 public interface Car {
     public String color = "";
