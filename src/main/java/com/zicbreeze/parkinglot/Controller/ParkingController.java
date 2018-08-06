@@ -33,7 +33,7 @@ public class ParkingController implements Car {
     @Override
     public void park(String regisNo, String color) {
         if (SIZE == 0) {
-            System.out.println("Sorry, parking lot is not created");
+            System.out.println("Sorry, No parking lot created");
             System.out.println();
         } else if (slotMap1.size() == SIZE) {
             System.out.println("Sorry, parking lot is full");
@@ -63,7 +63,7 @@ public class ParkingController implements Car {
     @Override
     public void leave(String slotNo) {
         if (SIZE == 0) {
-            System.out.println("Sorry, parking lot is not created");
+            System.out.println("Sorry, No parking lot created");
             System.out.println();
         } else if (slotMap1.size() > 0) {
             ParkingCar leaveCar = slotMap1.get(slotNo);
@@ -114,7 +114,7 @@ public class ParkingController implements Car {
     @Override
     public void getRegistrationNoForCarsWithColour(String color) {
         if (SIZE == 0) {
-            System.out.println("Sorry, parking lot is not created");
+            System.out.println("Sorry, No parking lot created");
             System.out.println();
         } else if (slotMap3.containsKey(color)) {
             ArrayList<String> regisNoList = slotMap3.get(color);
@@ -135,7 +135,7 @@ public class ParkingController implements Car {
     @Override
     public void getSlotNoForCarsWithColour(String color) {
         if (SIZE == 0) {
-            System.out.println("Sorry, parking lot is not created");
+            System.out.println("Sorry, No parking lot created");
             System.out.println();
         } else if (slotMap3.containsKey(color)) {
             ArrayList<String> regisNoList = slotMap3.get(color);
@@ -162,7 +162,7 @@ public class ParkingController implements Car {
     @Override
     public void getSlotNoForRegistrationNo (String regisNo) {
         if (SIZE == 0) {
-            System.out.println("Sorry, parking lot is not created");
+            System.out.println("Sorry, No parking lot created");
             System.out.println();
         } else if (slotMap2.containsKey(regisNo)) {
             System.out.println(slotMap2.get(regisNo));
