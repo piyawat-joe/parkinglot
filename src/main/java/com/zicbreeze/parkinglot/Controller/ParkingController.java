@@ -17,7 +17,6 @@ public class ParkingController implements Car {
             SIZE = Integer.parseInt(lotNo);
         } catch (Exception e) {
             System.out.println("Invalid lot No");
-            System.out.println();
         }
         availableList = new ArrayList<Integer>() {};
         for (int i=1; i<= SIZE; i++) {
@@ -27,17 +26,14 @@ public class ParkingController implements Car {
         slotMap2 = new HashMap<String, String>();
         slotMap3 = new HashMap<String, ArrayList<String>>();
         System.out.println("Created a parking lot with " + lotNo + " slots");
-        System.out.println();
     }
 
     @Override
     public void park(String regisNo, String color) {
         if (SIZE == 0) {
             System.out.println("Sorry, No parking lot created");
-            System.out.println();
         } else if (slotMap1.size() == SIZE) {
             System.out.println("Sorry, parking lot is full");
-            System.out.println();
         } else {
             Collections.sort(availableList);
             String slot = availableList.get(0).toString();
@@ -55,7 +51,6 @@ public class ParkingController implements Car {
                 slotMap3.put(color, regisNoList);
             }
             System.out.println("Allocated slot number: " + slot);
-            System.out.println();
             availableList.remove(0);
         }
     }
@@ -64,7 +59,6 @@ public class ParkingController implements Car {
     public void leave(String slotNo) {
         if (SIZE == 0) {
             System.out.println("Sorry, No parking lot created");
-            System.out.println();
         } else if (slotMap1.size() > 0) {
             ParkingCar leaveCar = slotMap1.get(slotNo);
             if (leaveCar != null) {
@@ -77,14 +71,11 @@ public class ParkingController implements Car {
                 // Add the Lot No. back to available slot list.
                 availableList.add(Integer.parseInt(slotNo));
                 System.out.println("Slot number " + slotNo + " is free");
-                System.out.println();
             } else {
                 System.out.println("Slot number " + slotNo + " is already empty");
-                System.out.println();
             }
         } else {
             System.out.println("Parking lot is empty");
-            System.out.println();
         }
     }
 
@@ -92,10 +83,9 @@ public class ParkingController implements Car {
     public void getStatus() {
         if (SIZE == 0) {
             System.out.println("Sorry, No parking lot created");
-            System.out.println();
         } else if (slotMap1.size() > 0) {
             // Print the current status.
-            System.out.println("Slot No.\tRegistration No.\tColor");
+            System.out.println("Slot No.\tRegistration No.\tColour");
             ParkingCar car;
             for (int i = 1; i <= SIZE; i++) {
                 String key = Integer.toString(i);
@@ -104,10 +94,9 @@ public class ParkingController implements Car {
                     System.out.println(i + "\t" + car.regisNo + "\t" + car.color);
                 }
             }
-            System.out.println();
+            //System.out.println();
         } else {
             System.out.println("Parking lot is empty");
-            System.out.println();
         }
     }
 
@@ -115,20 +104,17 @@ public class ParkingController implements Car {
     public void getRegistrationNoForCarsWithColour(String color) {
         if (SIZE == 0) {
             System.out.println("Sorry, No parking lot created");
-            System.out.println();
         } else if (slotMap3.containsKey(color)) {
             ArrayList<String> regisNoList = slotMap3.get(color);
-            System.out.println();
             for (int i=0; i < regisNoList.size(); i++) {
                 if (!(i==regisNoList.size() - 1)){
-                    System.out.print(regisNoList.get(i) + ",");
+                    System.out.print(regisNoList.get(i) + ", ");
                 } else {
-                    System.out.print(regisNoList.get(i));
+                    System.out.println(regisNoList.get(i));
                 }
             }
         } else {
             System.out.println("Not found");
-            System.out.println();
         }
     }
 
@@ -136,26 +122,22 @@ public class ParkingController implements Car {
     public void getSlotNoForCarsWithColour(String color) {
         if (SIZE == 0) {
             System.out.println("Sorry, No parking lot created");
-            System.out.println();
         } else if (slotMap3.containsKey(color)) {
             ArrayList<String> regisNoList = slotMap3.get(color);
             ArrayList<Integer> slotList = new ArrayList<Integer>();
-            System.out.println();
             for (int i=0; i < regisNoList.size(); i++) {
                 slotList.add(Integer.valueOf(slotMap2.get(regisNoList.get(i))));
             }
             Collections.sort(slotList);
             for (int j=0; j < slotList.size(); j++) {
                 if (!(j == slotList.size() - 1)) {
-                    System.out.print(slotList.get(j) + ",");
+                    System.out.print(slotList.get(j) + ", ");
                 } else {
-                    System.out.print(slotList.get(j));
+                    System.out.println(slotList.get(j));
                 }
             }
-            System.out.println();
         } else {
             System.out.println("Not found");
-            System.out.println();
         }
     }
 
@@ -163,12 +145,10 @@ public class ParkingController implements Car {
     public void getSlotNoForRegistrationNo (String regisNo) {
         if (SIZE == 0) {
             System.out.println("Sorry, No parking lot created");
-            System.out.println();
         } else if (slotMap2.containsKey(regisNo)) {
             System.out.println(slotMap2.get(regisNo));
         } else {
             System.out.println("Not found");
-            System.out.println();
         }
     }
 }

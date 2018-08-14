@@ -28,7 +28,7 @@ public class ParkingControllerTest {
         parkingLot.createParkingLot("6");
         assertEquals(6, parkingLot.SIZE);
         assertEquals(6, parkingLot.availableList.size());
-        assertEquals("Created a parking lot with 6 slots\n\n",outContent.toString());
+        assertEquals("Created a parking lot with 6 slots\n",outContent.toString());
     }
 
     @Test
@@ -36,8 +36,7 @@ public class ParkingControllerTest {
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
-                "Sorry, No parking lot created\n\n", outContent.toString());
+                "Sorry, No parking lot created\n", outContent.toString());
         parkingLot.createParkingLot("6");
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
@@ -47,149 +46,108 @@ public class ParkingControllerTest {
     @Test
     public void leave() throws Exception {
         parkingLot.leave("2");
-        assertEquals("Sorry, No parking lot created\n\n", outContent.toString());
+        assertEquals("Sorry, No parking lot created\n", outContent.toString());
         parkingLot.createParkingLot("6");
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
         parkingLot.leave("4");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
-                "Slot number 4 is already empty\n\n", outContent.toString());
+                "Slot number 4 is already empty\n", outContent.toString());
     }
 
     @Test
     public void getStatus() throws Exception {
         parkingLot.getStatus();
-        assertEquals("Sorry, No parking lot created\n\n", outContent.toString());
+        assertEquals("Sorry, No parking lot created\n", outContent.toString());
         parkingLot.createParkingLot("6");
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
         parkingLot.getStatus();
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
-                "Slot No.\tRegistration No.\tColor\n" +
+                "Slot No.\tRegistration No.\tColour\n" +
                 "1\tKA-01-HH-1234\tWhite\n" +
-                "2\tKA-01-HH-9999\tWhite\n\n", outContent.toString());
+                "2\tKA-01-HH-9999\tWhite\n", outContent.toString());
     }
 
     @Test
     public void getRegistrationNoForCarsWithColour() throws Exception {
         parkingLot.getRegistrationNoForCarsWithColour("White");
-        assertEquals("Sorry, No parking lot created\n\n", outContent.toString());
+        assertEquals("Sorry, No parking lot created\n", outContent.toString());
         parkingLot.createParkingLot("6");
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
         parkingLot.getRegistrationNoForCarsWithColour("White");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
-                "\n" +
-                "KA-01-HH-1234,KA-01-HH-9999", outContent.toString());
+                "KA-01-HH-1234, KA-01-HH-9999\n", outContent.toString());
         parkingLot.getRegistrationNoForCarsWithColour("Red");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
-                "\n" +
-                "KA-01-HH-1234,KA-01-HH-9999Not found\n\n", outContent.toString());
+                "KA-01-HH-1234, KA-01-HH-9999\nNot found\n", outContent.toString());
     }
 
     @Test
     public void getSlotNoForCarsWithColour() throws Exception {
         parkingLot.getSlotNoForCarsWithColour("White");
-        assertEquals("Sorry, No parking lot created\n\n", outContent.toString());
+        assertEquals("Sorry, No parking lot created\n", outContent.toString());
         parkingLot.createParkingLot("6");
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
         parkingLot.getSlotNoForCarsWithColour("White");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
-                "\n" +
-                "1,2\n", outContent.toString());
+                "1, 2\n", outContent.toString());
         parkingLot.getSlotNoForCarsWithColour("Red");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
-                "\n" +
-                "1,2\n" +
-                "Not found\n\n", outContent.toString());
+                "1, 2\n" +
+                "Not found\n", outContent.toString());
     }
 
     @Test
     public void getSlotNoForRegistrationNo() throws Exception {
         parkingLot.getSlotNoForRegistrationNo("KA-01-HH-1234");
-        assertEquals("Sorry, No parking lot created\n\n", outContent.toString());
+        assertEquals("Sorry, No parking lot created\n", outContent.toString());
         parkingLot.createParkingLot("6");
         parkingLot.park("KA-01-HH-1234", "White");
         parkingLot.park("KA-01-HH-9999", "White");
         parkingLot.getSlotNoForRegistrationNo("KA-01-HH-1234");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
                 "1\n", outContent.toString());
         parkingLot.getSlotNoForRegistrationNo("KA-01-HH-9999");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
                 "1\n" +
                 "2\n", outContent.toString());
         parkingLot.leave("1");
         parkingLot.getSlotNoForRegistrationNo("KA-01-HH-1234");
         assertEquals("Sorry, No parking lot created\n" +
-                "\n" +
                 "Created a parking lot with 6 slots\n" +
-                "\n" +
                 "Allocated slot number: 1\n" +
-                "\n" +
                 "Allocated slot number: 2\n" +
-                "\n" +
                 "1\n" +
                 "2\n" +
                 "Slot number 1 is free\n" +
-                "\n" +
-                "Not found\n\n", outContent.toString());
+                "Not found\n", outContent.toString());
     }
 
 }

@@ -26,7 +26,7 @@ public class UserInputTest {
         assertEquals("Invalid input.\n", outContent.toString());
         input.parseTextInput("status");
         assertEquals("Invalid input.\n" +
-                "Sorry, No parking lot created\n\n", outContent.toString());
+                "Sorry, No parking lot created\n", outContent.toString());
     }
 
 }

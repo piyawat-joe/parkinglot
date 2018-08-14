@@ -1,24 +1,23 @@
 # parkinglot
 
 #Project Requirements
-
 Install JDK.
 Install maven. (https://maven.apache.org/install.html)
 
 #Build Instructions
-Run the following command:
+1. Run the following command:
 mvn clean install
 
-------------------------------
-Build success 
-------------------------------
+---------------------------------------------------------------------------------------
+if Build success you will have target folder then you can continue to run program below
+---------------------------------------------------------------------------------------
 
 How to run Parking Lot program
 
-For:   Interactive
-To run program via bash command line: 
-$   ./parking_lot
+For: Interactive
+2. To run program via bash command line:
+./parking_lot.sh
 
-For:   File
+3. For: File
 To run the program:
-$   ./parking_lot file_inputs.txt
+./parking_lot.sh file_inputs.txt
